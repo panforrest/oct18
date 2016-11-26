@@ -13,8 +13,8 @@ router.get('/:code', function(req, res, next){
     .set('Accept', 'application/json')
     .end(function(err, response){
         console.log(JSON.stringify(response.body))
-        res.json(response.body)
-        // res.render('post', response.body)
+        //res.json(response.body)
+        res.render('post', response.body)
     })
 
 	
