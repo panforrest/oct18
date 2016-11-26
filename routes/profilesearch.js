@@ -9,8 +9,7 @@ router.get('/', function(req, res, next){
 })
 
 router.get('/:username', function(req, res, next){
-
-	var username = req.params.username
+    var username = req.params.username
 
     var url = 'https://www.instagram.com/'+username+'/media/'
     superagent
@@ -25,9 +24,32 @@ router.get('/:username', function(req, res, next){
         	return
         }
 
-        res.json(response.body)   //per superagent documentation
+        // res.json(response.body) 
+
+        res.render('profile', response.body)
     })
 })
+
+// router.get('/:username', function(req, res, next){
+
+// 	var username = req.params.username
+
+//     var url = 'https://www.instagram.com/'+username+'/media/'
+//     superagent
+//     .get(url)
+//     .query(null)
+//     .set('Accept', 'application/json')
+//     .end(function(err, response){
+//         if (err) {
+//         	res.json({
+//         		confirmation: 'fail'
+//         	})
+//         	return
+//         }
+
+//         res.json(response.body)   //per superagent documentation
+//     })
+// })
 
 router.post('/', function(req, res, next){
 	var username = req.body.username      //verytime post method, it's alway req.body
