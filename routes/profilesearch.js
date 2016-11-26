@@ -56,21 +56,24 @@ router.post('/', function(req, res, next){
  
     console.log(username)
 
-    var url = 'https://www.instagram.com/'+username+'/media/'
-    superagent
-    .get(url)
-    .query(null)
-    .set('Accept', 'application/json')
-    .end(function(err, response){
-        if (err) {
-        	res.json({
-        		confirmation: 'fail'
-        	})
-        	return
-        }
+    var url = '/profilesearch/'+username
+    res.redirect(url)
 
-        res.json(response.body)   //per superagent documentation
-    })
+    // var url = 'https://www.instagram.com/'+username+'/media/'
+    // superagent
+    // .get(url)
+    // .query(null)
+    // .set('Accept', 'application/json')
+    // .end(function(err, response){
+    //     if (err) {
+    //     	res.json({
+    //     		confirmation: 'fail'
+    //     	})
+    //     	return
+    //     }
+
+    //     res.json(response.body)   //per superagent documentation
+    // })
 
 })
 
