@@ -11,9 +11,26 @@ router.get('/', function(req, res, next){
 router.get('/:username', function(req, res, next){
 
 	var username = req.params.username
-    res.json({
-    	confirmation: username
+
+    var url = 'https://www.instagram.com/juicecrawl/media/'
+    superagent
+    .get(url)
+    .query(null)
+    .set('Accept', 'application/json')
+    .end(function(err, response){
+        if (err) {
+        	res.json({
+        		confirmation: 'fail'
+        	})
+        	return
+        }
+
+        res.json(response.body)   //per superagent documentation
     })
+
+    // res.json({
+    // 	confirmation: username
+    // })
 })
 
 module.exports = router
