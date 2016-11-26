@@ -27,7 +27,12 @@ router.get('/:username', function(req, res, next){
 
         res.json(response.body)   //per superagent documentation
     })
+})
 
+router.post('/', function(req, res, next){
+	var username = req.body.username      //verytime post method, it's alway req.body
+ 
+    console.log(username)
 })
 
 module.exports = router
