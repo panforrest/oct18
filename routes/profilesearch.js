@@ -8,11 +8,11 @@ router.get('/', function(req, res, next){
 
 })
 
-router.get('/test', function(req, res, next){
+router.get('/:username', function(req, res, next){
 
-	// var test = require.params.test
+	var username = req.params.username
     res.json({
-    	confirmation: 'Hey!'
+    	confirmation: username
     })
 })
 
