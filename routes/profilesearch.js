@@ -33,6 +33,23 @@ router.post('/', function(req, res, next){
 	var username = req.body.username      //verytime post method, it's alway req.body
  
     console.log(username)
+
+    var url = 'https://www.instagram.com/'+username+'/media/'
+    superagent
+    .get(url)
+    .query(null)
+    .set('Accept', 'application/json')
+    .end(function(err, response){
+        if (err) {
+        	res.json({
+        		confirmation: 'fail'
+        	})
+        	return
+        }
+
+        res.json(response.body)   //per superagent documentation
+    })
+
 })
 
 module.exports = router
