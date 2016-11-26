@@ -8,4 +8,12 @@ router.get('/', function(req, res, next){
 
 })
 
+router.get('/test', function(req, res, next){
+
+	// var test = require.params.test
+    res.json({
+    	confirmation: 'Hey!'
+    })
+})
+
 module.exports = router
